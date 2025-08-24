@@ -1,10 +1,159 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>My Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="./images/favicon.png" />
+  <title>Devansh Patira | AI & Web Developer</title>
+
+  <meta name="description" content="Devansh Patira — AI & web developer from Rajkot, India. Building ML, astronomy, and serverless projects.">
+  <meta name="keywords" content="Devansh Patira, AI, Machine Learning, Astronomy, AWS, Serverless, Python, C++, Web Development" />
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-  <h1>Hello, I’m Devansh!</h1>
+  <!-- Header -->
+  <header class="header" role="banner" id="top">
+    <div class="row">
+      <nav class="nav" role="navigation" aria-label="Primary">
+        <ul class="nav__items">
+          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
+          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="header__text-box row">
+      <div class="header__text">
+        <h1 class="heading-primary">
+          <span>Devansh Patira</span>
+        </h1>
+        <p>AI & Web Developer • B.Tech @ Marwadi University · 4EP3.  
+           Interests: ML, Astronomy, Serverless, and clean UI.</p>
+        <a href="#contact" class="btn btn--pink" aria-label="Get in touch">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <!-- Work -->
+    <section class="work" id="work">
+      <div class="row">
+        <h2>Selected Work</h2>
+        <div class="work__boxes">
+          <!-- Project 1 -->
+          <article class="work__box">
+            <div class="work__text">
+              <h3>AIstronomy: A New Era of Space Discovery</h3>
+              <p>A 45–50 minute lecture with 15+ slides exploring how AI accelerates space observation, data reduction, and discovery.</p>
+              <ul class="work__list">
+                <li>Python</li><li>ML</li><li>Astro data</li>
+              </ul>
+              <div class="work__links">
+                <a href="#" class="link__text">View Slides <span>&rarr;</span></a>
+                <a href="#"><img src="./images/github.svg" class="work__code" alt="GitHub"></a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/project-aistronomy.png" class="work__image" alt="AIstronomy talk cover">
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="work__box">
+            <div class="work__text">
+              <h3>Job Matching System (DMS Project)</h3>
+              <p>Matches job seekers to roles using bipartite graphs and the Hungarian Algorithm based on skill compatibility.</p>
+              <ul class="work__list">
+                <li>Python</li><li>Graph Theory</li><li>Hungarian Algorithm</li>
+              </ul>
+              <div class="work__links">
+                <a href="#" class="link__text">Read More <span>&rarr;</span></a>
+                <a href="#"><img src="./images/github.svg" class="work__code" alt="GitHub"></a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/project-jobmatch.png" class="work__image" alt="Job Matching System">
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="work__box">
+            <div class="work__text">
+              <h3>Serverless Image Recognition</h3>
+              <p>Prototype using AWS Rekognition + Lambda to auto-tag images and expose results via an API.</p>
+              <ul class="work__list">
+                <li>AWS Lambda</li><li>Rekognition</li><li>API</li>
+              </ul>
+              <div class="work__links">
+                <a href="#" class="link__text">Demo <span>&rarr;</span></a>
+                <a href="#"><img src="./images/github.svg" class="work__code" alt="GitHub"></a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="./images/project-serverless.png" class="work__image" alt="Serverless image recognition">
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="row">
+        <h2>About</h2>
+        <div class="about__content">
+          <div class="about__text">
+            <p>
+              I’m an aspiring astronomer and ML developer. I work with HTML, CSS, JS,
+              PHP/WordPress, SEO, C/C++, and Python. Recently learning German (A1) and
+              exploring practical AI products.
+            </p>
+            <a class="btn" href="#" aria-label="Download resume">Download Resume</a>
+          </div>
+          <div class="about__photo-container">
+            <img class="about__photo" src="./images/devansh.jpg" alt="Photo of Devansh Patira">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Contact -->
+  <section class="contact" id="contact" aria-label="Contact">
+    <div class="row">
+      <h2>Get in Touch</h2>
+      <div class="contact__info">
+        <p>
+          Interested in collaborating or have feedback? The fastest way to reach me is email.
+        </p>
+        <a href="mailto:you@example.com" class="btn">you@example.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer role="contentinfo" class="footer">
+    <div class="row">
+      <ul class="footer__social-links" aria-label="Social links">
+        <li><a href="https://github.com/DevanshPatira" aria-label="GitHub">
+          <img src="./images/github.svg" class="footer__social-image" alt="">
+        </a></li>
+        <li><a href="https://www.linkedin.com" aria-label="LinkedIn">
+          <img src="./images/linkedin.svg" class="footer__social-image" alt="">
+        </a></li>
+        <li><a href="https://x.com" aria-label="Twitter/X">
+          <img src="./images/twitter.svg" class="footer__social-image" alt="">
+        </a></li>
+      </ul>
+      <p>&copy; <span id="y"></span> Devansh Patira. Built with ❤️ and vanilla HTML/CSS/JS.</p>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" title="Back to Top">
+    <img src="./images/arrow-up.svg" alt="" class="back-to-top__image"/>
+  </a>
+
+  <script src="./index.js"></script>
 </body>
 </html>
