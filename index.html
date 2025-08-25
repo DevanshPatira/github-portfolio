@@ -3,158 +3,251 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="./images/favicon.png" />
-  <title>Devansh Patira | AI & Web Developer</title>
+  <title>Devansh Patira — Portfolio</title>
+  <meta name="description" content="Devansh Patira • AI/ML & Web Developer Portfolio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0f1a; --panel:#0f1624; --muted:#95a3b8; --text:#e6eeff; --brand:#4f46e5; --brand2:#06b6d4; --white:#ffffff;
+      --card:#101827; --ring:rgba(79,70,229,.35);
+      --light-bg:#f7f9fc; --light-text:#0e1726; --light-muted:#51617a; --light-card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-  <meta name="description" content="Devansh Patira — AI & web developer from Rajkot, India. Building ML, astronomy, and serverless projects.">
-  <meta name="keywords" content="Devansh Patira, AI, Machine Learning, Astronomy, AWS, Serverless, Python, C++, Web Development" />
-  <link rel="stylesheet" href="index.css" />
+    /* header */
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(10,15,26,.85),rgba(10,15,26,.35) 60%,transparent);backdrop-filter:saturate(160%) blur(8px);}
+    .container{max-width:1200px;margin:0 auto;padding:0 22px}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{font-weight:900;letter-spacing:-.02em}
+    .nav-right{display:flex;align-items:center;gap:16px}
+    .nav-links a{margin-left:14px;color:var(--muted);font-weight:700}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}
+    .toggle{width:38px;height:38px;border-radius:12px;border:1px solid rgba(148,163,184,.24);display:grid;place-items:center;cursor:pointer}
+
+    /* hero */
+    .hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:36px;padding:84px 0 56px}
+    .hero::before{content:"";position:absolute;inset:0;background:
+      linear-gradient(120deg,rgba(79,70,229,.30),rgba(6,182,212,.30)),
+      url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;opacity:.25;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1200px 800px at 20% -10%,rgba(79,70,229,.25),transparent 50%),radial-gradient(1000px 700px at 110% 10%,rgba(6,182,212,.25),transparent 40%);z-index:-1}
+    .greet{font-size:18px;color:#c7d2fe;font-weight:700;display:inline-flex;align-items:center;gap:10px}
+    .greet .spark{width:18px;height:18px;background:conic-gradient(from 0deg at 50% 50%, var(--brand), var(--brand2), var(--brand));border-radius:50%;filter:blur(.5px)}
+    .headline{font-size:64px;line-height:1.02;margin:10px 0 8px;font-weight:900;letter-spacing:-.03em}
+    .headline .accent{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .type{font-size:22px;color:var(--muted);min-height:32px}
+    .cta{display:flex;gap:12px;margin-top:20px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;font-weight:800;border:1px solid rgba(148,163,184,.22);background:linear-gradient(90deg,var(--brand),var(--brand2));color:#fff}
+    .btn.ghost{background:transparent;color:var(--text)}
+
+    .avatar-card{background:linear-gradient(180deg,rgba(16,24,39,.9),rgba(16,24,39,.6));border:1px solid rgba(148,163,184,.18);padding:22px;border-radius:22px;display:grid;place-items:center;gap:16px;box-shadow:0 10px 30px rgba(2,8,23,.35)}
+    .avatar{width:140px;height:140px;border-radius:999px;border:5px solid rgba(255,255,255,.15);background:url('avatar.jpg') center/cover no-repeat}
+    .quick{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid rgba(148,163,184,.18);background:rgba(148,163,184,.06);font-size:12px;color:#c8d6ff}
+
+    /* sections */
+    section{padding:70px 0;border-top:1px solid rgba(148,163,184,.12)}
+    h2{font-size:34px;margin:0 0 18px}
+    .muted{color:var(--muted)}
+
+    /* skills cards + progress bars */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid rgba(148,163,184,.14);padding:18px;border-radius:18px}
+    .bar{height:12px;border-radius:999px;background:rgba(148,163,184,.20);position:relative;overflow:hidden}
+    .bar > span{position:absolute;inset:0 0 0 0;width:0;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+    .knob{position:absolute;top:50%;transform:translateY(-50%);right:-8px;width:18px;height:18px;border-radius:999px;background:var(--white);border:2px solid var(--brand)}
+    .stat{display:flex;justify-content:space-between;font-weight:700;margin:6px 0 8px}
+
+    /* footer */
+    footer{padding:36px 0;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width: 980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.headline{font-size:42px}.grid{grid-template-columns:1fr}}
+
+    /* light mode */
+    body.light{background:var(--light-bg);color:var(--light-text)}
+    body.light header{background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.55) 60%,transparent)}
+    body.light .muted{color:var(--light-muted)}
+    body.light .card{background:var(--light-card);border-color:#e6ecf5}
+    body.light .nav-links a{color:var(--light-muted)}
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header" role="banner" id="top">
-    <div class="row">
-      <nav class="nav" role="navigation" aria-label="Primary">
-        <ul class="nav__items">
-          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home" class="brand">Devansh<span style="opacity:.6">.me</span></a>
+        <div class="nav-right">
+          <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <button id="themeToggle" class="toggle" aria-label="Toggle theme">🌙</button>
+        </div>
       </nav>
-    </div>
-
-    <div class="header__text-box row">
-      <div class="header__text">
-        <h1 class="heading-primary">
-          <span>Devansh Patira</span>
-        </h1>
-        <p>AI & Web Developer • B.Tech @ Marwadi University · 4EP3.  
-           Interests: ML, Astronomy, Serverless, and clean UI.</p>
-        <a href="#contact" class="btn btn--pink" aria-label="Get in touch">Get in touch</a>
-      </div>
     </div>
   </header>
 
-  <main role="main">
-    <!-- Work -->
-    <section class="work" id="work">
-      <div class="row">
-        <h2>Selected Work</h2>
-        <div class="work__boxes">
-          <!-- Project 1 -->
-          <article class="work__box">
-            <div class="work__text">
-              <h3>AIstronomy: A New Era of Space Discovery</h3>
-              <p>A 45–50 minute lecture with 15+ slides exploring how AI accelerates space observation, data reduction, and discovery.</p>
-              <ul class="work__list">
-                <li>Python</li><li>ML</li><li>Astro data</li>
-              </ul>
-              <div class="work__links">
-                <a href="#" class="link__text">View Slides <span>&rarr;</span></a>
-                <a href="#"><img src="./images/github.svg" class="work__code" alt="GitHub"></a>
-              </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-aistronomy.png" class="work__image" alt="AIstronomy talk cover">
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="work__box">
-            <div class="work__text">
-              <h3>Job Matching System (DMS Project)</h3>
-              <p>Matches job seekers to roles using bipartite graphs and the Hungarian Algorithm based on skill compatibility.</p>
-              <ul class="work__list">
-                <li>Python</li><li>Graph Theory</li><li>Hungarian Algorithm</li>
-              </ul>
-              <div class="work__links">
-                <a href="#" class="link__text">Read More <span>&rarr;</span></a>
-                <a href="#"><img src="./images/github.svg" class="work__code" alt="GitHub"></a>
-              </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-jobmatch.png" class="work__image" alt="Job Matching System">
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="work__box">
-            <div class="work__text">
-              <h3>Serverless Image Recognition</h3>
-              <p>Prototype using AWS Rekognition + Lambda to auto-tag images and expose results via an API.</p>
-              <ul class="work__list">
-                <li>AWS Lambda</li><li>Rekognition</li><li>API</li>
-              </ul>
-              <div class="work__links">
-                <a href="#" class="link__text">Demo <span>&rarr;</span></a>
-                <a href="#"><img src="./images/github.svg" class="work__code" alt="GitHub"></a>
-              </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-serverless.png" class="work__image" alt="Serverless image recognition">
-            </div>
-          </article>
-        </div>
+  <main id="home" class="container hero" aria-label="Intro">
+    <div>
+      <div class="greet"><span class="spark"></span> Welcome</div>
+      <h1 class="headline">Hi, I'm <span class="accent">Devansh Patira</span></h1>
+      <div id="typeTarget" class="type"></div>
+      <p class="muted" style="margin-top:8px">B.Tech (AI/ML) @ Marwadi University • Building AI‑powered space observation & smart home automation.
+      </p>
+      <div class="cta">
+        <a class="btn" href="#projects">View My Work →</a>
+        <a class="btn ghost" href="#contact">Get in Touch</a>
       </div>
-    </section>
-
-    <!-- About -->
-    <section class="about" id="about">
-      <div class="row">
-        <h2>About</h2>
-        <div class="about__content">
-          <div class="about__text">
-            <p>
-              I’m an aspiring astronomer and ML developer. I work with HTML, CSS, JS,
-              PHP/WordPress, SEO, C/C++, and Python. Recently learning German (A1) and
-              exploring practical AI products.
-            </p>
-            <a class="btn" href="#" aria-label="Download resume">Download Resume</a>
-          </div>
-          <div class="about__photo-container">
-            <img class="about__photo" src="./images/devansh.jpg" alt="Photo of Devansh Patira">
-          </div>
-        </div>
+    </div>
+    <div class="avatar-card">
+      <div class="avatar" title="Your photo (avatar.jpg)"></div>
+      <div class="quick">
+        <span class="pill">AI/ML</span>
+        <span class="pill">Web Dev</span>
+        <span class="pill">Data Science</span>
+        <span class="pill">AWS</span>
       </div>
-    </section>
+    </div>
   </main>
 
-  <!-- Contact -->
-  <section class="contact" id="contact" aria-label="Contact">
-    <div class="row">
-      <h2>Get in Touch</h2>
-      <div class="contact__info">
-        <p>
-          Interested in collaborating or have feedback? The fastest way to reach me is email.
-        </p>
-        <a href="mailto:you@example.com" class="btn">you@example.com</a>
+  <section id="about">
+    <div class="container">
+      <h2>About me</h2>
+      <p class="muted">I'm an aspiring AI/ML engineer aiming for the astronomical field. I like turning ideas into products—especially where <b>AI + data</b> meet the real world. I'm also learning German (A1) and love clean, fast UX.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>Skills & Expertise</h2>
+      <p class="muted">Edit the names and percentages in the HTML—bars animate automatically.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Programming</h3>
+          <div class="stat"><span>Python</span><span>85%</span></div>
+          <div class="bar" data-percent="85"><span></span><i class="knob"></i></div>
+          <div class="stat"><span>JavaScript</span><span>80%</span></div>
+          <div class="bar" data-percent="80"><span></span><i class="knob"></i></div>
+          <div class="stat"><span>C++</span><span>65%</span></div>
+          <div class="bar" data-percent="65"><span></span><i class="knob"></i></div>
+        </div>
+        <div class="card">
+          <h3>Frameworks</h3>
+          <div class="stat"><span>React.js</span><span>80%</span></div>
+          <div class="bar" data-percent="80"><span></span><i class="knob"></i></div>
+          <div class="stat"><span>Next.js</span><span>75%</span></div>
+          <div class="bar" data-percent="75"><span></span><i class="knob"></i></div>
+          <div class="stat"><span>TensorFlow</span><span>60%</span></div>
+          <div class="bar" data-percent="60"><span></span><i class="knob"></i></div>
+        </div>
+        <div class="card">
+          <h3>Cloud & DevOps</h3>
+          <div class="stat"><span>AWS</span><span>75%</span></div>
+          <div class="bar" data-percent="75"><span></span><i class="knob"></i></div>
+          <div class="stat"><span>REST APIs</span><span>85%</span></div>
+          <div class="bar" data-percent="85"><span></span><i class="knob"></i></div>
+          <div class="stat"><span>Network Security</span><span>60%</span></div>
+          <div class="bar" data-percent="60"><span></span><i class="knob"></i></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer role="contentinfo" class="footer">
-    <div class="row">
-      <ul class="footer__social-links" aria-label="Social links">
-        <li><a href="https://github.com/DevanshPatira" aria-label="GitHub">
-          <img src="./images/github.svg" class="footer__social-image" alt="">
-        </a></li>
-        <li><a href="https://www.linkedin.com" aria-label="LinkedIn">
-          <img src="./images/linkedin.svg" class="footer__social-image" alt="">
-        </a></li>
-        <li><a href="https://x.com" aria-label="Twitter/X">
-          <img src="./images/twitter.svg" class="footer__social-image" alt="">
-        </a></li>
-      </ul>
-      <p>&copy; <span id="y"></span> Devansh Patira. Built with ❤️ and vanilla HTML/CSS/JS.</p>
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="grid">
+        <a class="card" href="#" target="_blank">
+          <h3>AIstronomy: A New Era of Space Discovery</h3>
+          <p class="muted">Lecture + demos of AI in astronomy.</p>
+        </a>
+        <a class="card" href="#" target="_blank">
+          <h3>Job Matching System (Graph‑Based)</h3>
+          <p class="muted">Hungarian Algorithm on bipartite graphs.</p>
+        </a>
+        <a class="card" href="#" target="_blank">
+          <h3>Image Recognition on AWS</h3>
+          <p class="muted">Rekognition + Lambda serverless pipeline.</p>
+        </a>
+      </div>
     </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="card">
+        <p class="muted">Open to internships, collaborations, and speaking invites.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn" href="mailto:your.email@example.com">Email Me</a>
+          <a class="btn ghost" href="https://github.com/your-username" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Devansh Patira — Built with ❤ & GitHub Pages</div>
   </footer>
 
-  <a href="#top" class="back-to-top" title="Back to Top">
-    <img src="./images/arrow-up.svg" alt="" class="back-to-top__image"/>
-  </a>
+  <script>
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-  <script src="./index.js"></script>
+    // set active link while scrolling
+    const links=[...document.querySelectorAll('.nav-links a')];
+    const ids=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{const i=ids.indexOf(e.target);if(i>-1){const a=links[i];if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));a.classList.add('active');}}})
+    },{root:null,rootMargin:'-55% 0px -40% 0px',threshold:0});
+    ids.forEach(s=>obs.observe(s));
+
+    // theme toggle
+    const toggle=document.getElementById('themeToggle');
+    const setMode=m=>{document.body.classList.toggle('light',m==='light');localStorage.setItem('mode',m);toggle.textContent=m==='light'?'🌞':'🌙'};
+    setMode(localStorage.getItem('mode')||'dark');
+    toggle.addEventListener('click',()=>setMode(document.body.classList.contains('light')?'dark':'light'));
+
+    // typing animation (cycles phrases)
+    const phrases=['B.E. Artificial Intelligence & Data Science Student','AI • Web • Data Science','Passionate about clean UX & real‑world AI'];
+    const target=document.getElementById('typeTarget');
+    let p=0,c=0,dir=1; // dir: 1 typing, -1 deleting
+    function tick(){
+      const text=phrases[p];
+      c+=dir;
+      target.textContent=text.slice(0,c);
+      if(c===text.length+2){dir=-1}
+      if(c===0){dir=1;p=(p+1)%phrases.length}
+      const speed= dir===1 ? 70 : 40;
+      setTimeout(tick, speed);
+    }
+    tick();
+
+    // animate skill bars on view
+    const bars=[...document.querySelectorAll('.bar')];
+    const barObs=new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(e.isIntersecting){
+          const bar=e.target; const pct=+bar.dataset.percent; const fill=bar.querySelector('span'); const knob=bar.querySelector('.knob');
+          fill.style.transition='width 1200ms ease';
+          fill.style.width=pct+'%';
+          knob.style.left=pct+'%';
+          barObs.unobserve(bar);
+        }
+      })
+    },{threshold:.4});
+    bars.forEach(b=>barObs.observe(b));
+  </script>
 </body>
 </html>
-
